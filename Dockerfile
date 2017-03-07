@@ -27,3 +27,10 @@ ARG PIP_VERSION=1.5.6-5
 RUN apt-get install -yV python-pip=${PIP_VERSION}
 
 # end PIP #
+
+# AWS CLI #
+
+ARG AWS_CLI_VERDSION=1.11.57
+RUN pip install awscli==${AWS_CLI_VERDSION}
+
+# end AWS CLI #
