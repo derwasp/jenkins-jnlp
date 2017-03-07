@@ -13,3 +13,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         make \
         jq \
     && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update
