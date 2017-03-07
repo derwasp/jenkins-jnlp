@@ -36,3 +36,10 @@ ARG NODEJS_VERSION_FAMILY=7.x
 RUN curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION_FAMILY} | bash - && apt-get install -y nodejs
 
 # end NodeJS & NPM #
+
+# Severless #
+
+ARG SLS_VERSION=1.8.0
+RUN npm install -yg serverless@${SLS_VERSION}
+
+# end Serverless #
