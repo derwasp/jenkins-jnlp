@@ -20,3 +20,10 @@ ARG PYTHON_PACKAGE_VERSION=3.4.2-2
 RUN apt-get install -yV python3=${PYTHON_PACKAGE_VERSION}
 
 # end Python #
+
+# PIP #
+
+ARG PIP_VERSION=1.5.6-5
+RUN apt-get install -yV python-pip=${PIP_VERSION}
+
+# end PIP #
