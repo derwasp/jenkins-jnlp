@@ -13,3 +13,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         make \
         jq \
     && rm -rf /var/lib/apt/lists/*
+
+# Python #
+
+ARG PYTHON_PACKAGE_VERSION=3.4.2-2
+RUN apt-get install -yV python3=${PYTHON_PACKAGE_VERSION}
+
+# end Python #
