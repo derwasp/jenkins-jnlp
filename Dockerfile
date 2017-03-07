@@ -42,3 +42,10 @@ ARG NODEJS_PACKAGE_VERSION=7.7.1-1nodesource1~jessie1
 RUN curl -sL https://deb.nodesource.com/setup_${NODEJS_VERSION_FAMILY} | bash - && apt-get install -y nodejs=${NODEJS_PACKAGE_VERSION}
 
 # end NodeJS & NPM #
+
+# Severless #
+
+ARG SLS_VERSION=1.8.0
+RUN npm install -yg serverless@${SLS_VERSION}
+
+# end Serverless #
