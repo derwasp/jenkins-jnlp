@@ -15,3 +15,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update
+
+# PIP #
+
+ARG PIP_VERSION_MAGIC=1.5.6-5
+RUN apt-get install -y python-pip=${PIP_VERSION_MAGIC}
+
+# end PIP #
