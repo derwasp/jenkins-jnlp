@@ -33,8 +33,8 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
 
 # .NET Core #
 
-# dotnet-dev-debian-x64.1.0.0-rc4-004771
-ARG NETCORE_URL=https://go.microsoft.com/fwlink/?linkid=841689
+# dotnet-dev-debian-x64.1.0.1
+ARG NETCORE_URL=https://go.microsoft.com/fwlink/?LinkID=843453
 
 RUN apt-get update && apt-get install curl libunwind8 gettext -y
 RUN curl -sSL -o /tmp/dotnet.tar.gz ${NETCORE_URL}
