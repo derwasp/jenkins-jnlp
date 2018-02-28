@@ -42,17 +42,16 @@ RUN apt-get install -y --no-install-recommends \
         software-properties-common
 
 RUN curl -fsSL https://apt.dockerproject.org/gpg | apt-key add -
-
 RUN add-apt-repository \
        "deb https://apt.dockerproject.org/repo/ \
        debian-$(lsb_release -cs) \
        main"
 
 RUN apt-get update
+ARG DOCKER_VERSION=1.13.0-0
 
-ARG DOCKER_VERSION=1.13.0-0~debian-jessie
-
-RUN apt-get -y install docker-engine=${DOCKER_VERSION}
+RUN RELEASE=${DOCKER_VERSION}~debian-$(lsb_release -cs) && \
+            apt-get -y install docker-engine=$RELEASE
 
 # Docker end #
 
