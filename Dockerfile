@@ -33,6 +33,24 @@ ENV MONO_TLS_PROVIDER=btls
 
 # end mono #
 
+# GitVersion fix - further investigation needed if this can be made prettier #
+
+RUN apt-get update && apt-get install libssl-dev cmake -y
+RUN mkdir tempBuild
+
+RUN git clone https://github.com/libgit2/libgit2 tempBuild
+RUN cd tempBuild && mkdir build && cd build
+WORKDIR tempBuild/build
+RUN cmake ..
+RUN cmake --build .
+RUN mkdir /lib/linux && mkdir /lib/linux/x86_64 && cp /home/jenkins/tempBuild/build/*.* /lib/linux/x86_64
+# The name of the file is as referenced by GitVersion.CommandLine (3.6.5) - there may be a better way to do this
+RUN mv /lib/linux/x86_64/libgit2.so /lib/linux/x86_64/libgit2-baa87df.so
+RUN rm tempBuild -rf
+WORKDIR /
+
+# GitVersion fix end #
+
 # .NET Core #
 
 # dotnet-dev-debian-x64.1.0.4
