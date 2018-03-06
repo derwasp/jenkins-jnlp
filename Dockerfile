@@ -85,6 +85,6 @@ RUN ln -s /opt/dotnet/dotnet /usr/local/bin
 
 # end .NET Core #
 
-#COPY start-docker-and-slave /usr/local/bin/start-docker-and-slave
+COPY start-docker-and-slave /usr/local/bin/start-docker-and-slave
 
-#ENTRYPOINT ["start-docker-and-slave"]
+ENTRYPOINT ["start-docker-and-slave"]
