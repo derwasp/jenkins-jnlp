@@ -1,4 +1,4 @@
-FROM jenkinsci/jnlp-slave
+FROM jenkinsci/jnlp-slave:3.7-1
 
 # Metadata
 LABEL org.label-schema.vcs-url="https://github.com/derwasp/jenkins-jnlp" \
