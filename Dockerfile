@@ -50,3 +50,9 @@ RUN mkdir -p /opt/dotnet && tar zxf /tmp/dotnet.tar.gz -C /opt/dotnet
 RUN ln -s /opt/dotnet/dotnet /usr/local/bin
 
 # end .NET Core #
+
+# Zip as override for native packager not being bundled with dotnet
+
+RUN apt-get install zip -y
+
+# End zip hack 
