@@ -39,20 +39,21 @@ RUN apt-get update && apt-get install libgit2-dev -y
 
 # GitVersion fix end #
 
-# .NET Core #
-
-# dotnet-dev-debian-x64.1.0.4
-ARG NETCORE_URL=https://download.microsoft.com/download/E/7/8/E782433E-7737-4E6C-BFBF-290A0A81C3D7/dotnet-dev-debian-x64.1.0.4.tar.gz
-
-RUN apt-get update && apt-get install curl libunwind8 gettext -y
-RUN curl -sSL -o /tmp/dotnet.tar.gz ${NETCORE_URL}
-RUN mkdir -p /opt/dotnet && tar zxf /tmp/dotnet.tar.gz -C /opt/dotnet
-RUN ln -s /opt/dotnet/dotnet /usr/local/bin
-
-# end .NET Core #
-
 # Zip as override for native packager not being bundled with dotnet
 
 RUN apt-get install zip -y
 
 # End zip hack 
+
+# .NET Core #
+
+RUN apt-get update && apt-get install curl libunwind8 gettext -y
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
+    mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
+    wget -q https://packages.microsoft.com/config/debian/8/prod.list && \
+    mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+RUN apt-get install -y apt-transport-https
+RUN apt-get update
+RUN apt-get install dotnet-sdk-2.1.101 -y
+
+# end .NET Core #
